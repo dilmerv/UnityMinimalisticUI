@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class Window : MonoBehaviour
+public class Window : UIComponent
 {
     [SerializeField]
     private UnityEvent onOpen;
@@ -21,8 +21,12 @@ public class Window : MonoBehaviour
     [SerializeField]
     private string windowHeaderTitle = "[WINDOW TITLE]";
 
+    private Coroutine windowStateCoroutine;
+
     void Start()
     {   
+        base.Initialize();
+
         // sanity checks
         if(onOpen == null)
         {
@@ -44,13 +48,17 @@ public class Window : MonoBehaviour
     public void Open()
     {
         onOpen.Invoke();
-        gameObject.SetActive(true);
+        if(windowStateCoroutine != null)
+            StopCoroutine(windowStateCoroutine);
+        windowStateCoroutine = StartCoroutine(FadeIn());
     }
 
     public void Close()
     {
         onClose.Invoke();
-        gameObject.SetActive(false);
+        if(windowStateCoroutine != null)
+            StopCoroutine(windowStateCoroutine);
+        windowStateCoroutine = StartCoroutine(FadeOut());
     }
 
     void OnCloseButton()
