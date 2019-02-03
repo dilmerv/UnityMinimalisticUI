@@ -50,7 +50,14 @@ public class Window : UIComponent
         onOpen.Invoke();
         if(windowStateCoroutine != null)
             StopCoroutine(windowStateCoroutine);
-        windowStateCoroutine = StartCoroutine(FadeIn());
+        
+
+        if(animationType == AnimationType.Fade){
+            windowStateCoroutine = StartCoroutine(FadeIn());
+        }
+        else if(animationType == AnimationType.Movement){
+            windowStateCoroutine = StartCoroutine(Move(moveIn:true));
+        }
     }
 
     public void Close()
@@ -58,7 +65,13 @@ public class Window : UIComponent
         onClose.Invoke();
         if(windowStateCoroutine != null)
             StopCoroutine(windowStateCoroutine);
-        windowStateCoroutine = StartCoroutine(FadeOut());
+            
+        if(animationType == AnimationType.Fade){
+            windowStateCoroutine = StartCoroutine(FadeOut());
+        }
+        else if(animationType == AnimationType.Movement){
+            windowStateCoroutine = StartCoroutine(Move(moveIn:false));
+        }
     }
 
     void OnCloseButton()
