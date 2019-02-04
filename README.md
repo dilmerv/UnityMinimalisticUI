@@ -10,3 +10,5 @@
 ### Video 4 (Notes) - Unity3d Creating a minimalistic UI - Script Animations - Part 1
 
 ### Video 5 (Notes) - Unity3d Creating a minimalistic UI - Script Animations - Part 2
+
+### Video 6 (Notes) - Unity3d Creating a minimalistic UI - Custom Inspector
