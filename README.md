@@ -7,4 +7,6 @@
 
 ### Video 3 (Notes) - Unity3d Creating a minimalistic UI - Unity Events
 
-### Video 4 (Notes) - Unity3d Creating a minimalistic UI - Script Animations
+### Video 4 (Notes) - Unity3d Creating a minimalistic UI - Script Animations - Part 1
+
+### Video 5 (Notes) - Unity3d Creating a minimalistic UI - Script Animations - Part 2
