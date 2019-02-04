@@ -8,15 +8,60 @@ public class UIComponent : MonoBehaviour
     [SerializeField]
     private bool startHidden = true;
 
+    public bool StartHidden 
+    {
+        get => startHidden;
+        set => startHidden = value;
+    }    
+
+    [SerializeField]
+    private AnimationType animationType = AnimationType.None;
+
+    public AnimationType Animation 
+    {
+        get => animationType;
+        set => animationType = value;
+    }
+
     [SerializeField]
     private float fadeDuration = 1.0f;
+
+    public float FadeDuration 
+    {
+        get => fadeDuration;
+        set => fadeDuration = value;
+    }
+
+    [SerializeField]
+    private float moveDuration = 0;
+
+    public float MoveDuration 
+    {
+        get => moveDuration;
+        set => moveDuration = value;
+    }
+
+    [SerializeField]
+    private Vector3 moveFrom = Vector3.zero;
+
+    public Vector3 MoveFrom
+    {
+        get => moveFrom;
+        set => moveFrom = value;
+    }
+
+    [SerializeField]
+    private Vector3 moveTo = Vector3.zero;
+
+    public Vector3 MoveTo
+    {
+        get => moveTo;
+        set => moveTo = value;
+    }
 
     private float fadeValue = 0;
 
     private CanvasGroup canvasGroup;
-
-    [SerializeField]
-    protected AnimationType animationType = AnimationType.None;
 
     public enum AnimationType
     {
@@ -25,12 +70,7 @@ public class UIComponent : MonoBehaviour
         Movement
     }
 
-    [SerializeField]
-    private float moveDuration = 0;
-
-    [SerializeField]
-    private Vector3 moveFrom, moveTo = Vector3.zero;
-
+    
     private Vector3 moveValue = Vector3.zero;
 
     private RectTransform rectTransform;

@@ -9,17 +9,41 @@ public class Window : UIComponent
     [SerializeField]
     private UnityEvent onOpen;
 
+    public UnityEvent OnOpen
+    {
+        get => onOpen;
+        set => onOpen = value;
+    }
+
     [SerializeField]
     private UnityEvent onClose;
 
+    public UnityEvent OnClose
+    {
+        get => onClose;
+        set => onClose = value;
+    }
+
     [SerializeField]
-    private Text headerTextComponent;
+    private Text headerTextGameObject;
+
+    public Text HeaderTextGameObject
+    {
+        get => headerTextGameObject;
+        set => headerTextGameObject = value;
+    }
 
     [SerializeField]
     private Button headerCloseButtonComponent;
 
     [SerializeField]
     private string windowHeaderTitle = "[WINDOW TITLE]";
+
+    public string WindowHeaderTitle 
+    {
+        get => windowHeaderTitle;
+        set => windowHeaderTitle = value;
+    }
 
     private Coroutine windowStateCoroutine;
 
@@ -38,7 +62,7 @@ public class Window : UIComponent
             onClose = new UnityEvent();
         }
 
-        headerTextComponent.text = windowHeaderTitle;
+        headerTextGameObject.text = windowHeaderTitle;
         // adding listeners
         onOpen.AddListener(OnWindowOpen);
         onClose.AddListener(OnWindowClose);
@@ -52,10 +76,10 @@ public class Window : UIComponent
             StopCoroutine(windowStateCoroutine);
         
 
-        if(animationType == AnimationType.Fade){
+        if(Animation == AnimationType.Fade){
             windowStateCoroutine = StartCoroutine(FadeIn());
         }
-        else if(animationType == AnimationType.Movement){
+        else if(Animation == AnimationType.Movement){
             windowStateCoroutine = StartCoroutine(Move(moveIn:true));
         }
     }
@@ -66,10 +90,10 @@ public class Window : UIComponent
         if(windowStateCoroutine != null)
             StopCoroutine(windowStateCoroutine);
             
-        if(animationType == AnimationType.Fade){
+        if(Animation == AnimationType.Fade){
             windowStateCoroutine = StartCoroutine(FadeOut());
         }
-        else if(animationType == AnimationType.Movement){
+        else if(Animation == AnimationType.Movement){
             windowStateCoroutine = StartCoroutine(Move(moveIn:false));
         }
     }
@@ -87,6 +111,11 @@ public class Window : UIComponent
     void OnWindowClose()
     {
         Debug.Log("OnWindowClose executed");   
+    }
+
+    public void TestingOnCloseUnityEvent()
+    {
+        Debug.Log("TestingOnCloseUnityEvent executed");
     }
 }
 

@@ -374,7 +374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHidden: 1
-  fadeDuration: 3
+  animationType: 2
+  fadeDuration: 1
+  moveDuration: 3
+  moveFrom: {x: -1000, y: -800, z: 0}
+  moveTo: {x: 0, y: -800, z: 0}
   onOpen:
     m_PersistentCalls:
       m_Calls: []
@@ -382,12 +386,23 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onClose:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 276395780}
+        m_MethodName: TestingOnCloseUnityEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  headerTextComponent: {fileID: 1456505146}
+  headerTextGameObject: {fileID: 1456505146}
   headerCloseButtonComponent: {fileID: 514953588}
-  windowHeaderTitle: 'Settings '
+  windowHeaderTitle: Settings Window
 --- !u!225 &276395781
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1021,8 +1036,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd451eebb0491485cb508fdbe1e6ca5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHidden: 0
+  startHidden: 1
+  animationType: 1
   fadeDuration: 3
+  moveDuration: 0
+  moveFrom: {x: 0, y: 0, z: 0}
+  moveTo: {x: 0, y: 0, z: 0}
   onOpen:
     m_PersistentCalls:
       m_Calls: []
@@ -1033,7 +1052,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  headerTextComponent: {fileID: 2007024517}
+  headerTextGameObject: {fileID: 2007024517}
   headerCloseButtonComponent: {fileID: 591643946}
   windowHeaderTitle: Levels
 --- !u!225 &641728656
