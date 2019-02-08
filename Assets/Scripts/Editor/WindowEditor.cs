@@ -12,7 +12,11 @@ public class WindowEditor : Editor
     {
         Window customWindowEditor = (Window)target;
 
-        EditorGUILayout.LabelField("Window Settings");
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("Window Settings", EditorStyles.boldLabel);
+
+        EditorGUILayout.Separator();
 
         customWindowEditor.WindowHeaderTitle = EditorGUILayout
             .TextField("Window Header Title", customWindowEditor.WindowHeaderTitle);
@@ -23,27 +27,60 @@ public class WindowEditor : Editor
         customWindowEditor.StartHidden = EditorGUILayout
             .Toggle("Start Hidden", customWindowEditor.StartHidden);
 
-        customWindowEditor.Animation = (UIComponent.AnimationType)EditorGUILayout
-            .EnumPopup("Animation Type", customWindowEditor.Animation);
 
-        if(customWindowEditor.Animation == UIComponent.AnimationType.Fade)
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("Window Animations", EditorStyles.boldLabel);
+
+        EditorGUILayout.Separator();
+        // For Animation In
+
+        customWindowEditor.AnimationIn = (UIComponent.AnimationType)EditorGUILayout
+            .EnumPopup("In Animation Type", customWindowEditor.AnimationIn);
+
+        if(customWindowEditor.AnimationIn == UIComponent.AnimationType.Fade)
         {
-            customWindowEditor.FadeDuration = EditorGUILayout
-                .FloatField("Fade Duration", customWindowEditor.FadeDuration);
+            customWindowEditor.FadeInDuration = EditorGUILayout
+                .FloatField("Fade In Duration", customWindowEditor.FadeInDuration);
         }
-        else if(customWindowEditor.Animation == UIComponent.AnimationType.Movement)
+        else if(customWindowEditor.AnimationIn == UIComponent.AnimationType.Movement)
         {
-            customWindowEditor.MoveDuration = EditorGUILayout
-                .FloatField("Move Duration", customWindowEditor.MoveDuration);
+            customWindowEditor.MoveInDuration = EditorGUILayout
+                .FloatField("Move In Duration", customWindowEditor.MoveInDuration);
 
-            customWindowEditor.MoveFrom = EditorGUILayout
-                .Vector3Field("Move From", customWindowEditor.MoveFrom);
+            customWindowEditor.MoveInFrom = EditorGUILayout
+                .Vector3Field("Move In From", customWindowEditor.MoveInFrom);
 
-            customWindowEditor.MoveTo = EditorGUILayout
-                .Vector3Field("Move To", customWindowEditor.MoveTo);
+            customWindowEditor.MoveInTo = EditorGUILayout
+                .Vector3Field("Move In To", customWindowEditor.MoveInTo);
         }
 
-        EditorGUILayout.LabelField("Window Unity Events");
+        EditorGUILayout.Separator();
+
+        customWindowEditor.AnimationOut = (UIComponent.AnimationType)EditorGUILayout
+            .EnumPopup("Out Animation Type", customWindowEditor.AnimationOut);
+
+        // For Animation Out
+        if(customWindowEditor.AnimationOut == UIComponent.AnimationType.Fade)
+        {
+            customWindowEditor.FadeOutDuration = EditorGUILayout
+                .FloatField("Fade Out Duration", customWindowEditor.FadeOutDuration);
+        }
+        else if(customWindowEditor.AnimationOut == UIComponent.AnimationType.Movement)
+        {
+            customWindowEditor.MoveOutDuration = EditorGUILayout
+                .FloatField("Move Out Duration", customWindowEditor.MoveOutDuration);
+
+            customWindowEditor.MoveOutFrom = EditorGUILayout
+                .Vector3Field("Move Out From", customWindowEditor.MoveOutFrom);
+
+            customWindowEditor.MoveOutTo = EditorGUILayout
+                .Vector3Field("Move Out To", customWindowEditor.MoveOutTo);
+        }
+
+        EditorGUILayout.Separator();
+
+        EditorGUILayout.LabelField("Window Unity Events", EditorStyles.boldLabel);
 
         SerializedProperty onOpen = serializedObject.FindProperty("onOpen"); // unity event
         EditorGUILayout.PropertyField(onOpen);

@@ -76,11 +76,11 @@ public class Window : UIComponent
             StopCoroutine(windowStateCoroutine);
         
 
-        if(Animation == AnimationType.Fade){
+        if(AnimationIn == AnimationType.Fade){
             windowStateCoroutine = StartCoroutine(FadeIn());
         }
-        else if(Animation == AnimationType.Movement){
-            windowStateCoroutine = StartCoroutine(Move(moveIn:true));
+        else if(AnimationIn == AnimationType.Movement){
+            windowStateCoroutine = StartCoroutine(MoveIn());
         }
     }
 
@@ -90,11 +90,11 @@ public class Window : UIComponent
         if(windowStateCoroutine != null)
             StopCoroutine(windowStateCoroutine);
             
-        if(Animation == AnimationType.Fade){
+        if(AnimationOut == AnimationType.Fade){
             windowStateCoroutine = StartCoroutine(FadeOut());
         }
-        else if(Animation == AnimationType.Movement){
-            windowStateCoroutine = StartCoroutine(Move(moveIn:false));
+        else if(AnimationOut == AnimationType.Movement){
+            windowStateCoroutine = StartCoroutine(MoveOut());
         }
     }
 
