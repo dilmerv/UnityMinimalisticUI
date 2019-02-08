@@ -12,3 +12,5 @@
 ### Video 5 (Notes) - Unity3d Creating a minimalistic UI - Script Animations - Part 2
 
 ### Video 6 (Notes) - Unity3d Creating a minimalistic UI - Custom Inspector
+
+### Video 7 (Notes) - Unity3d Creating a minimalistic UI - Custom Inspector & adding fade and move animations
